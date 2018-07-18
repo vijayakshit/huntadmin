@@ -57,10 +57,13 @@ export const attemptLogin = (credentials) => {
               // console.log(response.headers)    //=> Headers
               // console.log(response.url)        //=> String
             
+             
               const a = response.text().body
               console.log(a)
-              dispatch(loginSuccess("Cors wala user"));
-
+              if(response.status==200)
+              {
+                dispatch(loginSuccess("Cors wala user"));
+              }
 
               
             }, function(error) {
