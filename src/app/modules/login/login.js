@@ -22,7 +22,7 @@ class Login extends Component {
   }
   
   componentDidMount(){
-    //this.props.checkIfAuthenticated();
+    this.props.checkIfAuthenticated();
   }
 
 
