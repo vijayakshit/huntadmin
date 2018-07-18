@@ -58,21 +58,25 @@ export const attemptLogin = (credentials) => {
               // console.log(response.url)        //=> String
             
              
-              const respnsejson = response.json()
-              
-              if(thisstatus===200)
-              {
-                console.log(thisstatus)
-                console.log(respnsejson)
-                dispatch(loginSuccess(respnsejson.username));
-              }
-              if(thisstatus===400)
-              {
-                console.log(thisstatus)
-                console.log(respnsejson)
-                dispatch(loginFailed("Bad Request"));
-              }
+              const responsejson = response.json()
+              responsejson.then((finalbody)=>{
+                if(thisstatus===200)
+                {
+                  console.log(thisstatus)
+                  console.log(finalbody)
+                  dispatch(loginSuccess(finalbody.username));
+                }
+                if(thisstatus===400)
+                {
+                  console.log(thisstatus)
+                  console.log(finalbody)
+                  dispatch(loginFailed("Bad Request"));
+                  
+                }
 
+              }
+              
+              );
               
             }, function(error) {
               error.message //=> String

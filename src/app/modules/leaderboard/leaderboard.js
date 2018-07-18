@@ -40,20 +40,26 @@ class Leaderboard extends Component {
       // console.log(response.statusText) //=> String
       // console.log(response.headers)    //=> Headers
       // console.log(response.url)  
-      const responsejson = response.json()     
-      if(status==200)
-      {
-  
-        console.log(responsejson);
-       console.log("Cors wala user")
-      }
-      if(status == 400)
-      {
+      const responsejson = response.json() 
+      responsejson.then((finalresponse) => 
+        {
+          if(status==200)
+          {
+      
+            console.log(finalresponse);
+          console.log("Cors wala user")
+          }
+          if(status == 400)
+          {
+    
+            console.log(finalresponse);
+          console.log("Bad Request")
+            
+          }
+        }
 
-        console.log(responsejson);
-       console.log("Bad Request")
-        
-      }
+      )    
+
      
 
 
