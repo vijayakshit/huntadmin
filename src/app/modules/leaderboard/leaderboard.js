@@ -27,7 +27,7 @@ class Leaderboard extends Component {
     //this.props.requestLeaderboardData();
     axios({
       method: 'get',
-      url: 'https://akshitsalfredo.herokuapp.com/api/getit',
+      url: 'https://akshitsalfredo.herokuapp.com/getit',
       
       config: {
          
