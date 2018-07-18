@@ -3,7 +3,7 @@ import axios from 'axios';
 //import 'url-search-params-polyfill';
 import logincall from "./api";
 
-const LOGIN_URL = 'https://akshitsalfredo.herokuapp.com/api/login';
+const LOGIN_URL = 'https://akshitsalfredo.herokuapp.com/login';
 const CHECK_URL = 'https://akshitsalfredo.herokuapp.com/api/isauth';
 
 //Hardcoded Crediants remove later
@@ -21,7 +21,18 @@ export const attemptLogin = (credentials) => {
                       "username": "akshitthevijay@gmail.com",
                       "password": "Password"
                     },
-                    //config: { headers: {'Content-Type': 'multipart/form-data' }}
+                    
+                    config: {
+                       
+                       mode: 'no-cors',
+                       headers: {
+                         'Access-Control-Allow-Origin': '*',
+                         'Content-Type': 'application/json',
+                       },
+                       withCredentials: true,
+                       credentials: 'same-origin',
+                      
+                      }
               })
               .then(response =>  {
                     dispatch(loginSuccess(response.data.data));
