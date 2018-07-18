@@ -22,8 +22,9 @@ export const attemptLogin = (credentials) => {
                       headers: {
                          'Content-Type': 'application/json',
                        },
+                       credentials: 'include',
                        withCredentials: true,
-                       //credentials: 'same-origin',
+                       
                       
                       }
               })
@@ -34,7 +35,7 @@ export const attemptLogin = (credentials) => {
               .catch( error => {
                   console.log(error);
                   
-                    dispatch(loginFailed(error));
+                    dispatch(loginFailed("Dikkat"));
               });  
 
     };

@@ -41,7 +41,7 @@ class Login extends Component {
       if(this.props.failure){
         componentsToRender.push(
           <span style={{color:"red"}} >
-            {this.props.failureMessage.response.data.status}
+            {this.props.failureMessage}
           </span>
         );
       }

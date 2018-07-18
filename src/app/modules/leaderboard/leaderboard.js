@@ -36,8 +36,8 @@ class Leaderboard extends Component {
            'Access-Control-Allow-Origin': '*',
            'Content-Type': 'application/json',
          },
+         credentials: 'include',
          withCredentials: true,
-         //credentials: 'same-origin',
         
         }
     })
