@@ -25,19 +25,19 @@ class Leaderboard extends Component {
   
   componentDidMount(){
     //this.props.requestLeaderboardData();
-    axios({
+    fetch({
       method: 'get',
       url: 'https://akshitsalfredo.herokuapp.com/getit',
       
       config: {
          
-         mode: 'no-cors',
+         mode: 'cors',
          headers: {
            'Access-Control-Allow-Origin': '*',
            'Content-Type': 'application/json',
          },
          withCredentials: true,
-         credentials: 'same-origin',
+         //credentials: 'same-origin',
         
         }
     })

@@ -12,19 +12,18 @@ export const attemptLogin = (credentials) => {
     return dispatch => {
 
         dispatch(loginStarted());
-        axios({
+        fetch({
                     method: 'post',
                     url: LOGIN_URL,
                     data: credentials,
                     config: {
                        
-                       mode: 'no-cors',
-                       headers: {
-                         'Access-Control-Allow-Origin': '*',
+                      mode: 'cors',
+                      headers: {
                          'Content-Type': 'application/json',
                        },
                        withCredentials: true,
-                       credentials: 'same-origin',
+                       //credentials: 'same-origin',
                       
                       }
               })
