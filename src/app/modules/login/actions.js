@@ -58,7 +58,7 @@ export const attemptLogin = (credentials) => {
               // console.log(response.url)        //=> String
             
              
-              const a = response.text().body
+              const a = response.text()
               console.log(a)
               if(response.status==200)
               {
