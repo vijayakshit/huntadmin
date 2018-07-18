@@ -58,11 +58,19 @@ export const attemptLogin = (credentials) => {
               // console.log(response.url)        //=> String
             
              
-              const a = response.text()
+              const a = response.json()
               console.log(a)
               if(response.status==200)
               {
+                const a = response.json()
+                console.log(a)
                 dispatch(loginSuccess("Cors wala user"));
+              }
+              if(response.status==400)
+              {
+                const a = response.json()
+                console.log(a)
+                dispatch(loginFailed("Bad Request"));
               }
 
               
