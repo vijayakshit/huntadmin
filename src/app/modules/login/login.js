@@ -21,6 +21,11 @@ class Login extends Component {
     this.props.requestAuthentication(credentials);    
   }
   
+  componentDidMount(){
+    //this.props.checkIfAuthenticated();
+  }
+
+
   render() {
 
     console.log(this.props);
