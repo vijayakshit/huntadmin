@@ -36,13 +36,25 @@ class Leaderboard extends Component {
       credentials: "include",
       mode:"cors",
     }).then(function(response) {
-      // console.log(response.status)     //=> number 100–599
+       const status = response.status;     //=> number 100–599
       // console.log(response.statusText) //=> String
       // console.log(response.headers)    //=> Headers
-      // console.log(response.url)        //=> String
-    
-      const a = response.text()
-      console.log(a)
+      // console.log(response.url)  
+      const responsejson = response.json()     
+      if(status==200)
+      {
+  
+        console.log(responsejson);
+       console.log("Cors wala user")
+      }
+      if(status == 400)
+      {
+
+        console.log(responsejson);
+       console.log("Bad Request")
+        
+      }
+     
 
 
       

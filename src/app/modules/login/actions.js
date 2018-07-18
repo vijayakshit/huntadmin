@@ -52,24 +52,24 @@ export const attemptLogin = (credentials) => {
               credentials: "include",
               mode:"cors",
             }).then(function(response) {
-              // console.log(response.status)     //=> number 100–599
+                const thisstatus = response.status;     //=> number 100–599
               // console.log(response.statusText) //=> String
               // console.log(response.headers)    //=> Headers
               // console.log(response.url)        //=> String
             
              
-              const a = response.json()
-              console.log(a)
-              if(response.status==200)
+              const respnsejson = response.json()
+              
+              if(thisstatus===200)
               {
-                const a = response.json()
-                console.log(a)
-                dispatch(loginSuccess("Cors wala user"));
+                console.log(thisstatus)
+                console.log(respnsejson)
+                dispatch(loginSuccess(respnsejson.username));
               }
-              if(response.status==400)
+              if(thisstatus===400)
               {
-                const a = response.json()
-                console.log(a)
+                console.log(thisstatus)
+                console.log(respnsejson)
                 dispatch(loginFailed("Bad Request"));
               }
 
