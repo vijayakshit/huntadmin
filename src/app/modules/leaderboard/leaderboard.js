@@ -25,31 +25,30 @@ class Leaderboard extends Component {
   
   componentDidMount(){
     //this.props.requestLeaderboardData();
-    fetch({
-      method: 'get',
-      url: 'https://akshitsalfredo.herokuapp.com/getit',
+
+    const DATA_URL = 'https://akshitsalfredo.herokuapp.com/getit';
+    
+    fetch(DATA_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      mode:"cors",
+    }).then(function(response) {
+      // console.log(response.status)     //=> number 100–599
+      // console.log(response.statusText) //=> String
+      // console.log(response.headers)    //=> Headers
+      // console.log(response.url)        //=> String
+    
+      const a = response.text().body
+      console.log(a)
+
+
       
-      config: {
-         
-         mode: 'cors',
-         headers: {
-           'Access-Control-Allow-Origin': '*',
-           'Content-Type': 'application/json',
-         },
-         credentials: 'include',
-         withCredentials: true,
-        
-        }
+    }, function(error) {
+      error.message //=> String
     })
-    .then(response =>  {
-      console.log(response)    
-     
-    })
-    .catch( error => {
-        console.log(error);
-        
-        
-    });  
 
 
   }

@@ -12,31 +12,72 @@ export const attemptLogin = (credentials) => {
     return dispatch => {
 
         dispatch(loginStarted());
-        fetch({
-                    method: 'post',
-                    url: LOGIN_URL,
-                    data: credentials,
-                    config: {
+
+
+        // axios({
+        //             method: 'post',
+        //             url: LOGIN_URL,
+        //             data: credentials,
+        //             config: {
                        
-                      mode: 'cors',
-                      headers: {
-                         'Content-Type': 'application/json',
-                       },
-                       credentials: 'include',
-                       withCredentials: true,
+        //               mode: 'no-cors',
+        //               headers: {
+        //                  'Content-Type': 'application/json',
+        //                },
+        //                //credentials: 'include',
+        //                withCredentials: true,
                        
                       
-                      }
-              })
-              .then(response =>  {
-                console.log(response)    
-                dispatch(loginSuccess(response.data.username));
-              })
-              .catch( error => {
-                  console.log(error);
-                  
-                    dispatch(loginFailed("Dikkat"));
-              });  
+        //               }
+        //       })
+        //       .then(response => response.text())
+        //       .then(data => {
+        //         console.log("here")
+
+        //         console.log(data)
+        //         dispatch(loginSuccess(data.username));
+        //       })
+        //       .catch( error => {
+        //         console.log(error);
+                
+        //           dispatch(loginFailed("Dikkat"));
+        //     }); 
+
+            fetch(LOGIN_URL, {
+              method: "POST",
+              body: JSON.stringify(credentials),
+              headers: {
+                "Content-Type": "application/json"
+              },
+              credentials: "include",
+              mode:"cors",
+            }).then(function(response) {
+              // console.log(response.status)     //=> number 100–599
+              // console.log(response.statusText) //=> String
+              // console.log(response.headers)    //=> Headers
+              // console.log(response.url)        //=> String
+            
+              const a = response.text().body
+              console.log(a)
+              dispatch(loginSuccess("Cors wala user"));
+
+
+              
+            }, function(error) {
+              error.message //=> String
+              dispatch(loginFailed("Dikkat"));
+            })
+
+              // .then(response   =>  {
+              //   response.json().then(function(data) {
+              //     console.log(data);
+              //   });
+                
+                
+
+              //   dispatch(loginSuccess(response.json().data.username));
+              // })
+      
 
     };
 }
