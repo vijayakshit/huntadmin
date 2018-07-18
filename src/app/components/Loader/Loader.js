@@ -1,10 +1,11 @@
-import React, { Component } from '../../react'
+import React, { Component } from 'react'
+import { Spin } from 'antd';
 
 export default class Loader extends Component {
   render() {
     return (
       <div>
-        ....Loader....
+          <Spin size="large" />
       </div>
     )
   }

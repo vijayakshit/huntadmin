@@ -3,10 +3,10 @@ import React from 'react'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { userIsAuthenticatedRedir, userIsNotAuthenticatedRedir,
-         userIsAuthenticated, userIsNotAuthenticated } from '../app/hoc/auth';
+         userIsAuthenticated, userIsNotAuthenticated } from './hoc/auth';
 import LeaderboardComponent from './modules/leaderboard'
-import AboutHuntComponent from '../app/modules/abouthunt'
-import LoginComponent from '../app/modules/login'
+import AboutHuntComponent from './modules/abouthunt'
+import LoginComponent from './modules/login'
 import * as actions from "./modules/login/actions"
 
 import './App.css';

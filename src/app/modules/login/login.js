@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import LoginForm from "./components/LoginForm/LoginForm"
-import Loader from "./components/Loader/Loader";
 import * as actions from './actions';
 import './login.css';
 import 'antd/dist/antd.css';
+import Loader from '../../components/Loader/Loader';
 
 class Login extends Component {
   static propTypes = {
