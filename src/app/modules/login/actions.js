@@ -13,22 +13,22 @@ export const attemptLogin = (credentials) => {
     return dispatch => {
 
         dispatch(loginStarted());
-        dispatch(logincall(loginSuccess(),loginFailed()));
-        // axios({
-        //             method: 'post',
-        //             url: LOGIN_URL,
-        //             data: {
-        //               "username": "akshitthevijay@gmail.com",
-        //               "password": "Password"
-        //             },
-        //             //config: { headers: {'Content-Type': 'multipart/form-data' }}
-        //       })
-        //       .then(response =>  {
-        //             dispatch(loginSuccess(response.data.data));
-        //       })
-        //       .catch( error => {
-        //             dispatch(loginFailed(error));
-        //       });  
+        //dispatch(logincall(loginSuccess(),loginFailed()));
+        axios({
+                    method: 'post',
+                    url: LOGIN_URL,
+                    data: {
+                      "username": "akshitthevijay@gmail.com",
+                      "password": "Password"
+                    },
+                    //config: { headers: {'Content-Type': 'multipart/form-data' }}
+              })
+              .then(response =>  {
+                    dispatch(loginSuccess(response.data.data));
+              })
+              .catch( error => {
+                    dispatch(loginFailed(error));
+              });  
 
     };
 }
