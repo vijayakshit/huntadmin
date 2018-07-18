@@ -1,7 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 //import 'url-search-params-polyfill';
-import logincall from "./api";
 
 const LOGIN_URL = 'https://akshitsalfredo.herokuapp.com/login';
 const CHECK_URL = 'https://akshitsalfredo.herokuapp.com/api/isauth';
@@ -13,15 +12,10 @@ export const attemptLogin = (credentials) => {
     return dispatch => {
 
         dispatch(loginStarted());
-        //dispatch(logincall(loginSuccess(),loginFailed()));
         axios({
                     method: 'post',
                     url: LOGIN_URL,
-                    data: {
-                      "username": "akshitthevijay@gmail.com",
-                      "password": "Password"
-                    },
-                    
+                    data: credentials,
                     config: {
                        
                        mode: 'no-cors',
@@ -35,9 +29,12 @@ export const attemptLogin = (credentials) => {
                       }
               })
               .then(response =>  {
-                    dispatch(loginSuccess(response.data.data));
+                console.log(response)    
+                dispatch(loginSuccess(response.data.username));
               })
               .catch( error => {
+                  console.log(error);
+                  
                     dispatch(loginFailed(error));
               });  
 
@@ -62,7 +59,7 @@ export const loginSuccess = (data) => {
 export const loginFailed = (error) => {
   return {
       type: actionTypes.LOGIN_FAILURE,
-      errorMessage: error
+      failureMessage: error
   }
 }
 
@@ -87,6 +84,12 @@ export const checkIfAuthenticated = () => {
                   dispatch(loginFailed(error));
             });  
   };
+}
+
+export const logout = () => {
+  return {
+    type: actionTypes.LOGOUT
+  }
 }
 
 

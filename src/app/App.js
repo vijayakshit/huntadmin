@@ -2,73 +2,74 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { logout } from './core/actions'
 import { userIsAuthenticatedRedir, userIsNotAuthenticatedRedir,
          userIsAuthenticated, userIsNotAuthenticated } from '../app/hoc/auth';
-
-import styles from "./Ap3p.css";
-
-import style from "./test.less";
-
-
 import LeaderboardComponent from './modules/leaderboard'
 import AboutHuntComponent from '../app/modules/abouthunt'
 import LoginComponent from '../app/modules/login'
-import { Layout, Menu, Breadcrumb } from 'antd';
+import * as actions from "./modules/login/actions"
 
-const { Header, Content, Footer } = Layout;
-
-const getUserName = user => {
-  if (user.data) {
-    return `Welcome ${user.data.name}`
-  }
-  return `Not logged in`
-}
-
-// Need to apply the hocs here to avoid applying them inside the render method
+import './App.css';
+// Applying HOCs
 const Login = userIsNotAuthenticatedRedir(LoginComponent)
 const AboutHunt = userIsAuthenticatedRedir(AboutHuntComponent)
 const Leaderboard = userIsAuthenticatedRedir(LeaderboardComponent)
 
+// const LoginLink = userIsNotAuthenticated(() => <NavLink to="/login">Login</NavLink>)
 
-// Only show login when the user is not logged in and logout when logged in
-// Could have also done this with a single wrapper and `FailureComponent`
-const UserName = ({ user }) => (<div>{getUserName(user)}</div>)
-const LoginLink = userIsNotAuthenticated(() => <NavLink to="/login">Login</NavLink>)
-const LogoutLink = userIsAuthenticated(({ logout }) => <a href="#" onClick={() => logout()}>Logout</a>)
+const NavigaionLink = ({logoutHandler}) => {
+  
 
-function App({ user , logout }) {
+  return(
+    <nav >
+    <div className="navHeader">
+     
+        <span className="navItems">
+          <NavLink exact to="/">
+            <span className="navItem">
+              AboutHunt
+            </span>
+          </NavLink>
+          <NavLink exact to="/leaderboard">
+            <span className="navItem">
+              Leaderboard
+            </span>
+          </NavLink>
+        </span>
+        <span className="navItems">
+          <a href="#" onClick={() => logoutHandler()}>
+            <span className="logoutNavItem">
+              Logout
+            </span>
+          </a>
+        </span>
+      
+    </div >
+    </nav >
+  );
+}     
+const Navigation = userIsAuthenticated(NavigaionLink)
+
+
+
+function App({ auth , requestLogout }) {
+
   return (
     <Router>
-      <div className={style.header}>
-          <div >
-            Logo Cometh Here
-            <UserName user={user} />
+      <div className="appContentContainer">
+          <div className="appHeader" >
+            <span className="appName">HUNT</span>
           </div>
 
-          <div>
+          
+            <Navigation logoutHandler={() => requestLogout()} />  
+          
 
-          <nav >
-            <NavLink exact to="/">AboutHunt</NavLink>
-            <br />
-            <NavLink exact to="/leaderboard">Leaderboard</NavLink>
-            <br />
-
-            <LoginLink />
-            <br />
-
-            <LogoutLink logout={logout} />
-            <br />
-
-            <UserName user={user} />
-          </nav>
-         
-          </div >
-          <div className={styles.content}>
+          <div className="appContent">
             <Route exact path="/" component={AboutHunt}/>
             <Route path="/login" component={Login}/>
             <Route path="/leaderboard" component={Leaderboard}/>
-            </div>
+          </div>
         </div>
     </Router>
 
@@ -76,8 +77,18 @@ function App({ user , logout }) {
     )
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+      
+      requestLogout : () => {dispatch(actions.logout())},
+      //checkIfAuthenticated : () => {dispatch(actions.checkIfAuthenticated())}
+  }
+  
+}
+
+
 const mapStateToProps = state => ({
-  user: state.user
+  auth: state.auth
 })
 
-export default connect(mapStateToProps, { logout })(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

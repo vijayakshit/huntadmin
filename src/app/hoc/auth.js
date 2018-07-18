@@ -7,8 +7,8 @@ import Loading from '../components/loading/loading'
 const locationHelper = locationHelperBuilder({})
 
 const userIsAuthenticatedDefaults = {
-  authenticatedSelector: state => state.user.data !== null,
-  authenticatingSelector: state => state.user.isLoading,
+  authenticatedSelector: state => state.auth.loggedIn,
+  authenticatingSelector: state => state.auth.loggingIn,
   wrapperDisplayName: 'UserIsAuthenticated'
 }
 
@@ -23,7 +23,9 @@ export const userIsAuthenticatedRedir = connectedRouterRedirect({
 
 const userIsNotAuthenticatedDefaults = {
   // Want to redirect the user when they are done loading and authenticated
-  authenticatedSelector: state => state.user.data === null && state.user.isLoading === false,
+  //authenticatedSelector: state => state.auth.loggedIn === false && state.auth.loggingIn === false,
+  authenticatedSelector: state => state.auth.loggedIn === false ,
+
   wrapperDisplayName: 'UserIsNotAuthenticated'
 }
 

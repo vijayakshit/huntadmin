@@ -4,6 +4,6 @@ import AuthReducer from '../modules/login/reducers'
 
 
 export default combineReducers({
-    user : user,
+    //user : user,
     auth : AuthReducer
 });

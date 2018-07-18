@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 import LoginForm from "./components/LoginForm/LoginForm"
 import Loader from "./components/Loader/Loader";
 import * as actions from './actions';
-
+import './login.css';
+import 'antd/dist/antd.css';
 
 class Login extends Component {
   static propTypes = {
@@ -21,25 +22,33 @@ class Login extends Component {
   }
   
   render() {
+
+    console.log(this.props);
     
-    let componentToRender = {};
-    let messageToRender = {};
+    let componentsToRender = [];
 
 
     if(this.props.loggingIn){
-      componentToRender = <Loader/> ;
+      componentsToRender.push(<Loader/>);
     }
     else{
-      componentToRender = <LoginForm authenticate ={(credentials) => this.authenticate(credentials)}/> ;
+      componentsToRender.push (<LoginForm authenticate ={(credentials) => this.authenticate(credentials)}/> );
       if(this.props.failure){
-        messageToRender = this.props.failureMessage;
+        componentsToRender.push(
+          <span style={{color:"red"}} >
+            {this.props.failureMessage.response.data.status}
+          </span>
+        );
       }
     }
 
     return (
-      <div>
-       {componentToRender}
-      
+      <div className="loginContainer">
+       
+        <div className="formContainer">
+          {componentsToRender}
+        </div>
+
       </div>
     )
   }

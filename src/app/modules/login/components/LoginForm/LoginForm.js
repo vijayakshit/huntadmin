@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import './LoginForm.css';
 
 const FormItem = Form.Item;
 
@@ -8,11 +9,12 @@ class NormalLoginForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        console.log('Received values of form: ', {password:values.password,username:values.userName});
+        this.props.authenticate({password:values.password,username:values.userName});
       }
     });
 
-    this.props.authenticate(e);
+    
   }
 
   render() {
@@ -38,13 +40,11 @@ class NormalLoginForm extends React.Component {
             valuePropName: 'checked',
             initialValue: true,
           })(
-            <Checkbox>Remember me</Checkbox>
+            <Checkbox className="login-form-button" >Remember me</Checkbox>
           )}
-          <a className="login-form-forgot" href="">Forgot password</a>
           <Button type="primary" htmlType="submit" className="login-form-button">
             Log in
           </Button>
-          Or <a href="">register now!</a>
         </FormItem>
       </Form>
     );

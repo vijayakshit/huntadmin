@@ -5,6 +5,7 @@ export default class Leaderboard extends Component {
     return (
       <div>
         Leaderboard
+
       </div>
     )
   }
