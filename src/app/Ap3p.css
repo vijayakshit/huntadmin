@@ -1,0 +1,19 @@
+.header { 
+  position: 'fixed'; 
+  z-index : 1; 
+  width: '100%'; 
+}
+  
+.headerItem{ 
+  line-height: '64px' ; 
+}
+
+.contentContainer{
+  padding: '0 50px';
+  margin-top: 64;
+}
+.content{
+  background: '#fff',;
+  padding: 24;
+  min-height: 380;
+}   
