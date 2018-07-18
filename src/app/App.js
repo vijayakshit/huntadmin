@@ -17,15 +17,23 @@ const Leaderboard = userIsAuthenticatedRedir(LeaderboardComponent)
 
 // const LoginLink = userIsNotAuthenticated(() => <NavLink to="/login">Login</NavLink>)
 
+const AppHeaderComponent =() => {
+  return(
+    <div className="appHeader" >
+    <span className="appName">HUNT</span>
+  </div>
+  );
+}
+const AppHeader = userIsNotAuthenticated(AppHeaderComponent)
+
 const NavigaionLink = ({logoutHandler}) => {
   
 
   return(
     <nav >
     <div className="navHeader">
-     
         <span className="navItems">
-          <NavLink exact to="/">
+          <NavLink  exact to="/" >
             <span className="navItem">
               AboutHunt
             </span>
@@ -37,11 +45,11 @@ const NavigaionLink = ({logoutHandler}) => {
           </NavLink>
         </span>
         <span className="navItems">
-          <a href="#" onClick={() => logoutHandler()}>
+         
             <span className="logoutNavItem">
-              Logout
+              <a href="#" onClick={() => logoutHandler()}>Logout</a>
             </span>
-          </a>
+          
         </span>
       
     </div >
@@ -55,14 +63,16 @@ const Navigation = userIsAuthenticated(NavigaionLink)
 function App({ auth , requestLogout }) {
 
   return (
+
     <Router>
+      <div>
+      <AppHeader/>
+      <Navigation logoutHandler={() => requestLogout()} />  
       <div className="appContentContainer">
-          <div className="appHeader" >
-            <span className="appName">HUNT</span>
-          </div>
+
 
           
-            <Navigation logoutHandler={() => requestLogout()} />  
+            
           
 
           <div className="appContent">
@@ -71,6 +81,7 @@ function App({ auth , requestLogout }) {
             <Route path="/leaderboard" component={Leaderboard}/>
           </div>
         </div>
+      </div>
     </Router>
 
           
