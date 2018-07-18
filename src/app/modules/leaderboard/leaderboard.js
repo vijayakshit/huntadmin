@@ -29,7 +29,7 @@ class Leaderboard extends Component {
     const DATA_URL = 'https://akshitsalfredo.herokuapp.com/getit';
     
     fetch(DATA_URL, {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json"
       },
