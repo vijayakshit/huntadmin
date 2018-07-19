@@ -105,7 +105,7 @@ export const loginStarted = () => {
 
 export const loginSuccess = (data) => {
     
-  const user = data.username;
+  const user = data.user;
   return {
         type: actionTypes.LOGIN_SUCCESS,
         user: user
@@ -161,7 +161,7 @@ export const checkIfAuthenticated = () => {
                 {
                   console.log(thisstatus)
                   console.log(finalbody)
-                  dispatch(loginSuccess(finalbody.user))
+                  dispatch(loginSuccess(finalbody))
                  
                 }
                 if(thisstatus===400)
