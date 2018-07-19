@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Dropdown, Icon } from 'antd';
+import { Button,Menu, Dropdown, Icon } from 'antd';
 
 
 export default class HuntSelectorDropdown extends Component {
@@ -14,13 +14,13 @@ export default class HuntSelectorDropdown extends Component {
       return(
         <Menu>
           <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
+            <div>One</div>
           </Menu.Item>
           <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">2nd menu item</a>
+            <div>Two</div>
           </Menu.Item>
           <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">3rd menu item</a>
+            <div>Three</div>
           </Menu.Item>
         </Menu>
       );

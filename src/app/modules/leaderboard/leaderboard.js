@@ -13,62 +13,22 @@ import axios from 'axios';
 
 class Leaderboard extends Component {
   static propTypes = {
-    LeaderboardData: PropTypes.Boolean,
+    
     loading: PropTypes.Boolean,
+    
+    selectedHunt : PropTypes.String,
+    selectedHuntData : PropTypes.object,
+    listOfHunts : PropTypes.object,
+    leaderboardData: PropTypes.Boolean,
+
     failure: PropTypes.Boolean,
     failureMessage: PropTypes.String,
+
   }
 
-  // authenticate(credentials){
-  //   this.props.requestAuthentication(credentials);    
-  // }
   
   componentDidMount(){
-    //this.props.requestLeaderboardData();
-
-    const DATA_URL = 'https://akshitsalfredo.herokuapp.com/getit';
-    
-    fetch(DATA_URL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      credentials: "include",
-      mode:"cors",
-    }).then(function(response) {
-       const status = response.status;     //=> number 100–599
-      // console.log(response.statusText) //=> String
-      // console.log(response.headers)    //=> Headers
-      // console.log(response.url)  
-      const responsejson = response.json() 
-      responsejson.then((finalresponse) => 
-        {
-          if(status==200)
-          {
-      
-            console.log(finalresponse);
-          console.log("Cors wala user")
-          }
-          if(status == 400)
-          {
-    
-            console.log(finalresponse);
-          console.log("Bad Request")
-            
-          }
-        }
-
-      )    
-
-     
-
-
-      
-    }, function(error) {
-      error.message //=> String
-    })
-
-
+    this.props.requestLeaderboardDataFetch();
   }
 
 
@@ -77,8 +37,6 @@ class Leaderboard extends Component {
     console.log(this.props);
     
     let componentsToRender = [];
-
-
     if(this.props.loading){
       componentsToRender.push(<Loader/>);
     }
@@ -86,14 +44,13 @@ class Leaderboard extends Component {
       if(this.props.failure){
         componentsToRender.push(
           <span style={{color:"red"}} >
-            {this.props.failureMessage.response.data.status}
+            {this.props.failureMessage}
           </span>
         );
       }
-      
       componentsToRender.push (<HuntSelectorDropdown /> );
       componentsToRender.push (<LeaderBoardTable /> );
-
+      //componentsToRender.push (this.props );
     }
 
     return (
@@ -101,6 +58,7 @@ class Leaderboard extends Component {
        
         <div className="formContainer">
           {componentsToRender}
+          
         </div>
 
       </div>
@@ -109,16 +67,16 @@ class Leaderboard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  loading: state.auth.loggingIn,
-  LeaderboardData: state.auth.user,
-  failure : state.auth.failure,
-  failureMessage : state.auth.failureMessage
+  loading: state.leaderboard.loggingIn,
+  LeaderboardData: state.leaderboard.user,
+  failure : state.leaderboard.failure,
+  failureMessage : state.leaderboard.failureMessage
 })
 
 const mapDispatchToProps = dispatch => {
   return {
-      requestAuthentication : (credentials) => {dispatch(actions.attemptLogin(credentials))},
-      checkIfAuthenticated : () => {dispatch(actions.checkIfAuthenticated())}
+    requestLeaderboardDataFetch : () => {dispatch(actions.fetchLeaderboardData())},
+    changeSelectedHuntTo : (huntid) => {dispatch(actions.changeSelectedHunt(huntid))}
   }
   
 }

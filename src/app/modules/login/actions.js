@@ -80,7 +80,7 @@ export const attemptLogin = (credentials) => {
               
             }, function(error) {
               error.message //=> String
-              dispatch(loginFailed("Dikkat"));
+              dispatch(loginFailed("Error Logging In"));
             })
 
               // .then(response   =>  {
@@ -185,7 +185,8 @@ export const checkIfAuthenticated = () => {
               
             }, function(error) {
               error.message //=> String
-              dispatch(loginFailed("Dikkat"));
+              //Empty Message Cuz 
+              dispatch(loginFailed("."));
             })
 
 
