@@ -40,10 +40,10 @@ class NormalLoginForm extends React.Component {
             valuePropName: 'checked',
             initialValue: true,
           })(
-            <Checkbox className="login-form-button" >Remember me</Checkbox>
+            <Checkbox className="login-form-remember" >Remember me</Checkbox>
           )}
           <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
+            Sign In
           </Button>
         </FormItem>
       </Form>

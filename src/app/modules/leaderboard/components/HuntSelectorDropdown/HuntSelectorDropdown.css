@@ -11,8 +11,8 @@
     
     
     align-self: center;
-    padding-right: 400px;
-    font-size: 1.4rem;
+    padding-right: 550px;
+    font-size: 1.6rem;
     color:black;
     font-weight: bolder;
 
@@ -29,6 +29,8 @@
     font-size: 1.2rem;
     height: 80px;
     min-width: 100%;
-    background-color: gainsboro;
+    background-color: whitesmoke;
+    border: 2px  solid gainsboro;
+    border-bottom: 0px  ;
 
 }

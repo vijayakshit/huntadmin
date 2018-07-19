@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { userIsAuthenticatedRedir, userIsNotAuthenticatedRedir,
          userIsAuthenticated, userIsNotAuthenticated } from './hoc/auth';
 import LeaderboardComponent from './modules/leaderboard'
+import HuntKitchenComponent from './modules/huntkitchen'
 import AboutHuntComponent from './modules/abouthunt'
 import LoginComponent from './modules/login'
 import * as actions from "./modules/login/actions"
@@ -14,7 +15,7 @@ import './App.css';
 const Login = userIsNotAuthenticatedRedir(LoginComponent)
 const AboutHunt = userIsAuthenticatedRedir(AboutHuntComponent)
 const Leaderboard = userIsAuthenticatedRedir(LeaderboardComponent)
-
+const HuntKitchen = userIsAuthenticatedRedir(HuntKitchenComponent)
 // const LoginLink = userIsNotAuthenticated(() => <NavLink to="/login">Login</NavLink>)
 
 const AppHeaderComponent =() => {
@@ -42,6 +43,11 @@ const NavigaionLink = ({logoutHandler}) => {
           <NavLink exact to="/leaderboard">
             <span className="navItem">
               Leaderboard
+            </span>
+          </NavLink>
+          <NavLink exact to="/huntkitchen">
+            <span className="navItem">
+              Hunt Kitchen
             </span>
           </NavLink>
         </span>
@@ -78,6 +84,7 @@ function App({ auth , requestLogout }) {
 
           <div className="appContent">
             <Route exact path="/" component={AboutHunt}/>
+            <Route exact path="/huntkitchen" component={HuntKitchen}/>
             <Route path="/login" component={Login}/>
             <Route path="/leaderboard" component={Leaderboard}/>
           </div>

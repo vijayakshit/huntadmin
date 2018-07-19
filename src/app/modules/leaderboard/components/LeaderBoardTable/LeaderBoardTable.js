@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Table, Icon, Divider } from 'antd';
+import './LeaderBoardTable.css';
 
 export default class LeaderBoardTable extends Component {
 
@@ -54,7 +55,7 @@ export default class LeaderBoardTable extends Component {
       }];
 
     return (
-      <div>
+      <div className="leaderboardTable">
         <Table columns={columns} dataSource={truedata} />
       </div>
     )

@@ -63,7 +63,7 @@ const initialState = {
             case actionTypes.LOGIN_REQUESTED : return onStartLogin(state);
             case actionTypes.LOGIN_SUCCESS : return onLoginComplete(state,action);
             case actionTypes.LOGIN_FAILURE : return onLoginFailed(state,action);
-            case actionTypes.LOGOUT : return onLogout(state,action);
+            case actionTypes.LOGOUT_SUCCESS : return onLogout(state,action);
             default : return state;
         }
 
