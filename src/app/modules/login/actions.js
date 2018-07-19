@@ -107,54 +107,91 @@ export const checkIfAuthenticated = () => {
   };
 }
 
-export const logout = () => {
-  console.log("Log out initalized ");
-  return dispatch => {
 
-    
-            fetch(LOGOUT_URL, {
+export const logout = () => {
+
+  
+  
+    console.log("Checking If Logged in at Server");
+    return dispatch => {
+  
+      
+      fetch(LOGOUT_URL, 
+            {
               method: "POST",
               headers: {
-                "Content-Type": "application/json"
-              },
-              body:{"Just":"A Body"},
+                          "Content-Type": "application/json"
+                        },
               credentials: "include",
               mode:"cors",
-            }).then(function(response) {
-                const thisstatus = response.status;     //=> number 100–599
+            }
+          )
+          .then(function(response) {
+                    const thisstatus = response.status;     //=> number 100–599
+                    const responsejson = response.json()
+                    responsejson.then((finalbody)=>{
+                        console.log(thisstatus)
+                        console.log(finalbody)  
+                        if(thisstatus===200)
+                        {
+                          dispatch(logout(finalbody))
+                        }
+                      }     
+                    );  
+                }, function(error) {
+                    console.log(error.message) 
+  
+                  }
+      )
+    };
+  
+
+  // return dispatch => {
+
+    
+  //           fetch(LOGOUT_URL, {
+  //             method: "POST",
+  //             headers: {
+  //               "Content-Type": "application/json"
+  //             },
+  //             body:{"Just":"A Body"},
+  //             credentials: "include",
+  //             mode:"cors",
+  //           }).then(function(response) {
+  //               const thisstatus = response.status;     //=> number 100–599
               
              
-              const responsejson = response.json()
-              responsejson.then((finalbody)=>{
-                if(thisstatus===200)
-                {
+  //             const responsejson = response.json()
+  //             responsejson.then((finalbody)=>{
+  //               if(thisstatus===200)
+  //               {
                   
-                  console.log(thisstatus)
-                  console.log(finalbody)
-                  dispatch(onlogoutSuccess())
+  //                 console.log(thisstatus)
+  //                 console.log(finalbody)
+  //                 dispatch(onlogoutSuccess())
                  
-                }
-                else if(thisstatus===401)
-                {
-                  console.log(thisstatus)
-                  console.log(finalbody)
-                  dispatch(onlogoutSuccess());
+  //               }
+  //               else if(thisstatus===401)
+  //               {
+  //                 console.log(thisstatus)
+  //                 console.log(finalbody)
+  //                 dispatch(onlogoutSuccess());
                   
-                }
-                else{
-                  console.log(thisstatus)
-                  console.log(finalbody)
-                  console.log("Unable to Logout")
-                }
+  //               }
+  //               else{
+  //                 console.log(thisstatus)
+  //                 console.log(finalbody)
+  //                 console.log("Unable to Logout")
+  //               }
 
-              }
-              );
+  //             }
+  //             );
               
-            }, function(error) {
-              console.log(error.message) //=> String
-              //Empty Message Cuz 
-            })
-  };
+  //           }, function(error) {
+  //             console.log(error.message) //=> String
+  //             //Empty Message Cuz 
+  //           })
+  // };
   
 }
 

@@ -49,21 +49,25 @@ class Leaderboard extends Component {
           </span>
         );
       }
-      componentsToRender.push (
-        
-          <HuntSelectorDropdown 
-              selectedHuntName={this.props.listOfHunts[this.props.selectedHunt]["huntname"]}
-              changeSelectedHuntTo={this.props.changeSelectedHuntTo} 
-              listOfHunts={this.props.listOfHunts}/> 
-        
-      );
 
-      componentsToRender.push (
-        <div>
-          <LeaderBoardTable  
-          selectedHuntData={this.props.selectedHuntData}/> 
-        </div>
-      );
+      if(!this.props.loading && this.props.selectedHunt!==null)
+      {
+          componentsToRender.push (
+            
+              <HuntSelectorDropdown 
+                  selectedHuntName={this.props.listOfHunts[this.props.selectedHunt]["huntname"]}
+                  changeSelectedHuntTo={this.props.changeSelectedHuntTo} 
+                  listOfHunts={this.props.listOfHunts}/> 
+            
+          );
+
+          componentsToRender.push (
+            <div>
+              <LeaderBoardTable  
+              selectedHuntData={this.props.selectedHuntData}/> 
+            </div>
+          );
+      }
       //componentsToRender.push (this.props );
     }
 
