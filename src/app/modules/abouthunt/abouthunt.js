@@ -4,7 +4,7 @@ export default class AboutHunt extends Component {
   render() {
     return (
       <div>
-        About Hunt
+        Yet To Be Implemented
       </div>
     )
   }

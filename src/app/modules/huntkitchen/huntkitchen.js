@@ -10,7 +10,7 @@ export class HuntKitchen extends Component {
   render() {
     return (
       <div>
-        test
+        Yet To Be Implemented
       </div>
     )
   }
