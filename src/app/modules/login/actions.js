@@ -161,7 +161,7 @@ export const checkIfAuthenticated = () => {
                 {
                   console.log(thisstatus)
                   console.log(finalbody)
-                  dispatch(loginSuccess())
+                  dispatch(loginSuccess(finalbody.user))
                  
                 }
                 if(thisstatus===400)
