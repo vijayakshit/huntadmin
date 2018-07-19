@@ -8,6 +8,7 @@ import Loader from '../../components/Loader/Loader';
 import LeaderBoardTable from "./components/LeaderBoardTable/LeaderBoardTable";
 import HuntSelectorDropdown from "./components/HuntSelectorDropdown/HuntSelectorDropdown";
 import axios from 'axios';
+import './leaderboard.css'
 
 
 
@@ -48,18 +49,31 @@ class Leaderboard extends Component {
           </span>
         );
       }
-      componentsToRender.push (<HuntSelectorDropdown listOfHunts={this.props.listOfHunts}/> );
-      componentsToRender.push (<LeaderBoardTable  selectedHuntData={this.props.selectedHuntData}/> );
+      componentsToRender.push (
+        
+          <HuntSelectorDropdown 
+              selectedHuntName={this.props.listOfHunts[this.props.selectedHunt]["huntname"]}
+              changeSelectedHuntTo={this.props.changeSelectedHuntTo} 
+              listOfHunts={this.props.listOfHunts}/> 
+        
+      );
+
+      componentsToRender.push (
+        <div>
+          <LeaderBoardTable  
+          selectedHuntData={this.props.selectedHuntData}/> 
+        </div>
+      );
       //componentsToRender.push (this.props );
     }
 
     return (
-      <div className="loginContainer">
+      <div className="leaderboardContainer">
        
-        <div className="formContainer">
+        
           {componentsToRender}
           
-        </div>
+       
 
       </div>
     )

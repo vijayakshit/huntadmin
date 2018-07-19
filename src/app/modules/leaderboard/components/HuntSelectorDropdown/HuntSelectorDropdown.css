@@ -1,0 +1,34 @@
+.huntSelector {
+    width:100%;
+    height: 50px;
+    align-self: center;
+    padding: 5px;
+    font-size: 1.2rem;
+
+}
+
+.currentHuntName {
+    
+    
+    align-self: center;
+    padding-right: 400px;
+    font-size: 1.4rem;
+    color:black;
+    font-weight: bolder;
+
+}
+
+.huntSelectorContainer {
+
+
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left:20px;
+    font-size: 1.2rem;
+    height: 80px;
+    min-width: 100%;
+    background-color: gainsboro;
+
+}

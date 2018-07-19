@@ -72,7 +72,7 @@ export const fetchLeaderboardSuccess = (data) => {
   const leaderboardData = data.leaderboarddata
   const selectedHunt = data.selectedhunt
   const selectedHuntData = data.selectedhuntdata
-  const listOfHunts = data.listofhunts
+  const listOfHunts = data.allHunts
 
 
   return {

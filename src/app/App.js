@@ -24,7 +24,8 @@ const AppHeaderComponent =() => {
   </div>
   );
 }
-const AppHeader = userIsNotAuthenticated(AppHeaderComponent)
+//const AppHeader = userIsNotAuthenticated(AppHeaderComponent)
+const AppHeader = AppHeaderComponent;
 
 const NavigaionLink = ({logoutHandler}) => {
   

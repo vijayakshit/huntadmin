@@ -1,39 +1,57 @@
 import React, { Component } from 'react'
-import { Button,Menu, Dropdown, Icon } from 'antd';
-
+import {  Menu, Dropdown, Icon } from 'antd';
+import './HuntSelectorDropdown.css';
 
 export default class HuntSelectorDropdown extends Component {
   
 
     
-  
+
   
   render() {
+    
 
-    const menu = () => {
+    console.log(this.props.listOfHunts);
+
+    const hunts = this.props.listOfHunts
+    
+    const menuItems = []
+    
+    for (var menukey in hunts) {
+      console.log(menukey)
+      menuItems.push(
+          <Menu.Item key={menukey}>
+            <div>
+              {hunts[menukey].huntname}
+            </div>
+          </Menu.Item>
+      );
+
+    }
+
+
+    const getmenu = () => {
       return(
-        <Menu>
-          <Menu.Item>
-            <div>One</div>
-          </Menu.Item>
-          <Menu.Item>
-            <div>Two</div>
-          </Menu.Item>
-          <Menu.Item>
-            <div>Three</div>
-          </Menu.Item>
+        <Menu onClick={(key) => this.props.changeSelectedHuntTo(key.key)}>
+          {menuItems}
         </Menu>
       );
   
     }
 
     return (
-      <div>
-          <Dropdown overlay={menu()}>
-            <a className="ant-dropdown-link" href="#">
-              Hover me <Icon type="down" />
-            </a>
-          </Dropdown>
+      <div className="huntSelectorContainer">
+          
+            <Dropdown overlay={getmenu()}>
+              <div>
+                Select Hunt <Icon style={{ fontSize: "1.2rem" }} type="down" />
+              </div>
+            </Dropdown>
+          
+            <div className="currentHuntName" >
+              {this.props.selectedHuntName}
+            </div>
+         
       </div>
     )
   }
