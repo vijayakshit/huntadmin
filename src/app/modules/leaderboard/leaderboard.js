@@ -48,8 +48,8 @@ class Leaderboard extends Component {
           </span>
         );
       }
-      componentsToRender.push (<HuntSelectorDropdown /> );
-      componentsToRender.push (<LeaderBoardTable /> );
+      componentsToRender.push (<HuntSelectorDropdown listOfHunts={this.props.listOfHunts}/> );
+      componentsToRender.push (<LeaderBoardTable  selectedHuntData={this.props.selectedHuntData}/> );
       //componentsToRender.push (this.props );
     }
 
@@ -67,10 +67,16 @@ class Leaderboard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  loading: state.leaderboard.loggingIn,
-  LeaderboardData: state.leaderboard.user,
-  failure : state.leaderboard.failure,
-  failureMessage : state.leaderboard.failureMessage
+
+  loading: state.leaderboard.loading,
+    
+  selectedHunt :state.leaderboard.selectedHunt,
+  selectedHuntData : state.leaderboard.selectedHuntData,
+  listOfHunts : state.leaderboard.listOfHunts,
+  leaderboardData: state.leaderboard.leaderboardData,
+
+  failure: state.leaderboard.failure,
+  failureMessage: state.leaderboard.failureMessage,
 })
 
 const mapDispatchToProps = dispatch => {

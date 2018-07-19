@@ -5,24 +5,40 @@ export default class LeaderBoardTable extends Component {
 
   render() {
     const columns = [{
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-        render: text => <a href="javascript:;">{text}</a>,
+        title: 'Rank',
+        dataIndex: 'position',
+        key: 'position',
       }, {
-        title: 'Age',
-        dataIndex: 'age',
-        key: 'age',
+        title: 'Hunter',
+        dataIndex: 'huntername',
+        key: 'huntername',
       }, {
-        title: 'Address',
-        dataIndex: 'address',
-        key: 'address',
+        title: 'Completion',
+        dataIndex: 'completion',
+        key: 'completion',
+      },{
+        title: 'Score',
+        dataIndex: 'score',
+        key: 'score',
       },
     ];
       
+    const truedata = []
+
+    this.props.selectedHuntData.rankings.forEach(rankingObject => {
+      truedata.push({
+        position: rankingObject.position,
+        huntername: rankingObject.huntername,
+        completion: rankingObject.completion,
+        score: rankingObject.score,
+      });
+    });
+
+
+
       const data = [{
         key: '1',
-        name: 'John Brown',
+        huntername: 'John Brown',
         age: 32,
         address: 'New York No. 1 Lake Park',
       }, {
@@ -36,9 +52,10 @@ export default class LeaderBoardTable extends Component {
         age: 32,
         address: 'Sidney No. 1 Lake Park',
       }];
+
     return (
       <div>
-        <Table columns={columns} dataSource={data} />
+        <Table columns={columns} dataSource={truedata} />
       </div>
     )
   }
