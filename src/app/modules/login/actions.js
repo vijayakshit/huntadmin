@@ -114,6 +114,10 @@ export const logout = () => {
     
             fetch(LOGOUT_URL, {
               method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body:{"Just":"A Body"},
               credentials: "include",
               mode:"cors",
             }).then(function(response) {
@@ -127,14 +131,14 @@ export const logout = () => {
                   
                   console.log(thisstatus)
                   console.log(finalbody)
-                  dispatch(logoutSuccess())
+                  dispatch(onlogoutSuccess())
                  
                 }
                 else if(thisstatus===401)
                 {
                   console.log(thisstatus)
                   console.log(finalbody)
-                  dispatch(logoutSuccess());
+                  dispatch(onlogoutSuccess());
                   
                 }
                 else{
@@ -147,15 +151,14 @@ export const logout = () => {
               );
               
             }, function(error) {
-              error.message //=> String
+              console.log(error.message) //=> String
               //Empty Message Cuz 
-              dispatch(loginFailed("."));
             })
   };
   
 }
 
-export const logoutSuccess = () => {
+export const onlogoutSuccess = () => {
   return {
     type: actionTypes.LOGOUT_SUCCESS
   }
