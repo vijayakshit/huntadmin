@@ -108,7 +108,7 @@ export const checkIfAuthenticated = () => {
 }
 
 export const logout = () => {
-  console.log("Log out initalized");
+  console.log("Log out initalized ");
   return dispatch => {
 
     
