@@ -3,7 +3,7 @@ import axios from 'axios';
 //import 'url-search-params-polyfill';
 
 const LOGIN_URL = 'https://akshitsalfredo.herokuapp.com/login';
-const CHECK_URL = 'https://akshitsalfredo.herokuapp.com/api/getit';
+const CHECK_URL = 'https://akshitsalfredo.herokuapp.com/isauth';
 
 //Hardcoded Crediants remove later
 export const attemptLogin = (credentials) => {
@@ -165,6 +165,13 @@ export const checkIfAuthenticated = () => {
                  
                 }
                 if(thisstatus===400)
+                {
+                  console.log(thisstatus)
+                  console.log(finalbody)
+                  dispatch(logout());
+                  
+                }
+                if(thisstatus===401)
                 {
                   console.log(thisstatus)
                   console.log(finalbody)
