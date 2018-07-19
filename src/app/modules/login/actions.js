@@ -64,13 +64,13 @@ export const attemptLogin = (credentials) => {
                 {
                   console.log(thisstatus)
                   console.log(finalbody)
-                  dispatch(loginSuccess(finalbody.username));
+                  dispatch(loginSuccess(finalbody));
                 }
                 if(thisstatus===400)
                 {
                   console.log(thisstatus)
                   console.log(finalbody)
-                  dispatch(loginFailed("Bad Request"));
+                  dispatch(loginFailed(finalbody.status));
                   
                 }
 
