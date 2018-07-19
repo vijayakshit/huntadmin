@@ -153,14 +153,14 @@ export const checkIfAuthenticated = () => {
                 {
                   console.log(thisstatus)
                   console.log(finalbody)
-                  dispatch(logout());
+                  //dispatch(logout());
                   
                 }
                 if(thisstatus===401)
                 {
                   console.log(thisstatus)
                   console.log(finalbody)
-                  dispatch(logout());
+                  //dispatch(logout());
                   
                 }
 
@@ -177,7 +177,7 @@ export const checkIfAuthenticated = () => {
 }
 
 export const logout = () => {
-  console.log("Checking If Logged in at Server");
+  console.log("Log out initalized");
   return dispatch => {
 
     
@@ -196,6 +196,7 @@ export const logout = () => {
               responsejson.then((finalbody)=>{
                 if(thisstatus===200)
                 {
+                  
                   console.log(thisstatus)
                   console.log(finalbody)
                   dispatch(logoutSuccess())

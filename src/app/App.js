@@ -70,7 +70,7 @@ const Navigation = userIsAuthenticated(NavigaionLink)
 function App({ auth , requestLogout }) {
 
   return (
-
+  <div className={{height:"100%"}}>
     <Router>
       <div>
       <AppHeader/>
@@ -91,7 +91,7 @@ function App({ auth , requestLogout }) {
         </div>
       </div>
     </Router>
-
+  </div>
           
     )
 }
