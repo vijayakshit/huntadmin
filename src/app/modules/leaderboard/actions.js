@@ -6,7 +6,7 @@ import axios from 'axios';
 const LEADERBOARD_FETCH_URL = 'https://akshitsalfredo.herokuapp.com/api/getallhuntleaderboard';
 
 //Hardcoded Crediants remove later
-export const fetchLeaderboardData = (credentials) => {
+export const fetchLeaderboardData = () => {
   
     console.log("Attempting Leaderboard Data Fetch");
     return dispatch => {
@@ -14,8 +14,7 @@ export const fetchLeaderboardData = (credentials) => {
         dispatch(fetchLeaderboardStarted());
 
             fetch(LEADERBOARD_FETCH_URL, {
-              method: "POST",
-              body: JSON.stringify(credentials),
+              method: "GET",
               headers: {
                 "Content-Type": "application/json"
               },
