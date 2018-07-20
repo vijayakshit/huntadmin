@@ -4,7 +4,7 @@ import LeaderboardReducer from '../modules/leaderboard/reducers';
 
 
 export default combineReducers({
-    //user : user,
+    
     auth : AuthReducer,
     leaderboard : LeaderboardReducer
 

@@ -85,8 +85,6 @@ const initialState = {
             case actionTypes.CHANGE_SELECTED_HUNT : return changeHuntForLeaderboard(state,action);
             default : return state;
         }
-
-    
     };
 
     export default leaderboardReducer;

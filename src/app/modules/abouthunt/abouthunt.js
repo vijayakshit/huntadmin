@@ -4,7 +4,7 @@ export default class AboutHunt extends Component {
   render() {
     return (
       <div>
-        Yet To Be Implemented
+        This is The About Hunt Module
       </div>
     )
   }

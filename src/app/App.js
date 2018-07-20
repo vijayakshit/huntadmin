@@ -3,7 +3,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { userIsAuthenticatedRedir, userIsNotAuthenticatedRedir,
-         userIsAuthenticated, userIsNotAuthenticated } from './hoc/auth';
+         userIsAuthenticated } from './hoc/auth';
 import LeaderboardComponent from './modules/leaderboard'
 import HuntKitchenComponent from './modules/huntkitchen'
 import AboutHuntComponent from './modules/abouthunt'
@@ -11,6 +11,8 @@ import LoginComponent from './modules/login'
 import * as actions from "./modules/login/actions"
 
 import './App.css';
+
+
 // Applying HOCs
 const Login = userIsNotAuthenticatedRedir(LoginComponent)
 const AboutHunt = userIsAuthenticatedRedir(AboutHuntComponent)
@@ -84,7 +86,7 @@ function App({ auth , requestLogout }) {
 
           <div className="appContent">
             <Route exact path="/" component={AboutHunt}/>
-            <Route exact path="/huntkitchen" component={HuntKitchen}/>
+            <Route path="/huntkitchen" component={HuntKitchen}/>
             <Route path="/login" component={Login}/>
             <Route path="/leaderboard" component={Leaderboard}/>
           </div>
@@ -97,10 +99,8 @@ function App({ auth , requestLogout }) {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-      
+  return {      
       requestLogout : () => {dispatch(actions.logout())},
-      //checkIfAuthenticated : () => {dispatch(actions.checkIfAuthenticated())}
   }
   
 }

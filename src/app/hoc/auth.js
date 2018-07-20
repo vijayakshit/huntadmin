@@ -20,7 +20,6 @@ export const userIsAuthenticatedRedir = connectedRouterRedirect({
   redirectPath: '/login'
 })
 
-
 const userIsNotAuthenticatedDefaults = {
   // Want to redirect the user when they are done loading and authenticated
   //authenticatedSelector: state => state.auth.loggedIn === false && state.auth.loggingIn === false,

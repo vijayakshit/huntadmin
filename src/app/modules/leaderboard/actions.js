@@ -1,7 +1,5 @@
 import * as actionTypes from './actionTypes';
 import {LOGOUT}  from '../login/actionTypes';
-import axios from 'axios';
-//import 'url-search-params-polyfill';
 
 const LEADERBOARD_FETCH_URL = 'https://akshitsalfredo.herokuapp.com/api/getallhuntleaderboard';
 
@@ -22,12 +20,8 @@ export const fetchLeaderboardData = () => {
               mode:"cors",
             }).then(function(response) {
                 const thisstatus = response.status;     //=> number 100–599
-              // console.log(response.statusText) //=> String
-              // console.log(response.headers)    //=> Headers
-              // console.log(response.url)        //=> String
-            
-             
-              const responsejson = response.json()
+          
+                const responsejson = response.json()
               responsejson.then((finalbody)=>{
                 if(thisstatus===200)
                 {

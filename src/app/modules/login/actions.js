@@ -75,8 +75,6 @@ export const checkIfAuthenticated = () => {
   
   console.log("Checking If Logged in at Server");
   return dispatch => {
-
-    
     fetch(CHECK_URL, 
           {
             method: "GET",
@@ -109,9 +107,6 @@ export const checkIfAuthenticated = () => {
 
 
 export const logout = () => {
-
-  
-  
     console.log("Checking If Logged in at Server");
     return dispatch => {
   
@@ -146,55 +141,6 @@ export const logout = () => {
                   }
       )
     };
-  
-
-  // return dispatch => {
-
-    
-  //           fetch(LOGOUT_URL, {
-  //             method: "POST",
-  //             headers: {
-  //               "Content-Type": "application/json"
-  //             },
-  //             body:{"Just":"A Body"},
-  //             credentials: "include",
-  //             mode:"cors",
-  //           }).then(function(response) {
-  //               const thisstatus = response.status;     //=> number 100–599
-              
-             
-  //             const responsejson = response.json()
-  //             responsejson.then((finalbody)=>{
-  //               if(thisstatus===200)
-  //               {
-                  
-  //                 console.log(thisstatus)
-  //                 console.log(finalbody)
-  //                 dispatch(onlogoutSuccess())
-                 
-  //               }
-  //               else if(thisstatus===401)
-  //               {
-  //                 console.log(thisstatus)
-  //                 console.log(finalbody)
-  //                 dispatch(onlogoutSuccess());
-                  
-  //               }
-  //               else{
-  //                 console.log(thisstatus)
-  //                 console.log(finalbody)
-  //                 console.log("Unable to Logout")
-  //               }
-
-  //             }
-  //             );
-              
-  //           }, function(error) {
-  //             console.log(error.message) //=> String
-  //             //Empty Message Cuz 
-  //           })
-  // };
-  
 }
 
 export const onlogoutSuccess = () => {
