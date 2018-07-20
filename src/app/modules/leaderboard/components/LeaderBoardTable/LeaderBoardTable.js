@@ -28,6 +28,7 @@ export default class LeaderBoardTable extends Component {
 
     this.props.selectedHuntData.rankings.forEach(rankingObject => {
       truedata.push({
+        key:rankingObject.position,
         position: rankingObject.position,
         huntername: rankingObject.huntername,
         completion: rankingObject.completion,

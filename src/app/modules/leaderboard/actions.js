@@ -25,21 +25,19 @@ export const fetchLeaderboardData = () => {
               responsejson.then((finalbody)=>{
                 if(thisstatus===200)
                 {
-                  console.log(thisstatus)
-                  console.log(finalbody)
                   dispatch(fetchLeaderboardSuccess(finalbody));
                 }
                 if(thisstatus===400)
                 {
-                  console.log(thisstatus)
-                  console.log(finalbody)
+                  // console.log(thisstatus)
+                  // console.log(finalbody)
                   dispatch(fetchLeaderboardFailed(finalbody.status));
                   
                 }
                 if(thisstatus===401)
                 {
-                  console.log(thisstatus)
-                  console.log(finalbody)
+                  // console.log(thisstatus)
+                  // console.log(finalbody)
                   dispatch(logout());
                   
                 }

@@ -11,14 +11,11 @@ export default class HuntSelectorDropdown extends Component {
   render() {
     
 
-    console.log(this.props.listOfHunts);
-
     const hunts = this.props.listOfHunts
     
     const menuItems = []
     
     for (var menukey in hunts) {
-      console.log(menukey)
       menuItems.push(
           <Menu.Item key={menukey}>
             <div>

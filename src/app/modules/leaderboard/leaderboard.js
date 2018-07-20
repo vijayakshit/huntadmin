@@ -7,7 +7,6 @@ import 'antd/dist/antd.css';
 import Loader from '../../components/Loader/Loader';
 import LeaderBoardTable from "./components/LeaderBoardTable/LeaderBoardTable";
 import HuntSelectorDropdown from "./components/HuntSelectorDropdown/HuntSelectorDropdown";
-import axios from 'axios';
 import './leaderboard.css'
 
 
@@ -15,16 +14,18 @@ import './leaderboard.css'
 class Leaderboard extends Component {
   static propTypes = {
     
-    loading: PropTypes.Boolean,
+    loading: PropTypes.bool,
     
-    selectedHunt : PropTypes.String,
+    selectedHunt : PropTypes.string,
     selectedHuntData : PropTypes.object,
     listOfHunts : PropTypes.object,
-    leaderboardData: PropTypes.Boolean,
+    leaderboardData: PropTypes.object,
 
-    failure: PropTypes.Boolean,
-    failureMessage: PropTypes.String,
+    failure: PropTypes.bool,
+    failureMessage: PropTypes.object,
 
+    requestLeaderboardDataFetch:PropTypes.func,
+    changeSelectedHuntTo:PropTypes.func
   }
 
   
@@ -35,11 +36,10 @@ class Leaderboard extends Component {
 
   render() {
 
-    console.log(this.props);
     
     let componentsToRender = [];
     if(this.props.loading){
-      componentsToRender.push(<Loader/>);
+      componentsToRender.push(<Loader key={'loader'}/>);
     }
     else{
       if(this.props.failure){
@@ -50,11 +50,12 @@ class Leaderboard extends Component {
         );
       }
 
-      if(!this.props.loading && this.props.selectedHunt!==null)
+      if(!this.props.loading && this.props.selectedHunt !== null)
       {
           componentsToRender.push (
-            
+
               <HuntSelectorDropdown 
+                  key ={"huntselector"}
                   selectedHuntName={this.props.listOfHunts[this.props.selectedHunt]["huntname"]}
                   changeSelectedHuntTo={this.props.changeSelectedHuntTo} 
                   listOfHunts={this.props.listOfHunts}/> 
@@ -62,10 +63,11 @@ class Leaderboard extends Component {
           );
 
           componentsToRender.push (
-            <div>
-              <LeaderBoardTable  
-              selectedHuntData={this.props.selectedHuntData}/> 
-            </div>
+            
+              <LeaderBoardTable 
+                key ={"leaderboardtable"}
+                selectedHuntData={this.props.selectedHuntData}/> 
+            
           );
       }
       //componentsToRender.push (this.props );

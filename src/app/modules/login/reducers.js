@@ -58,7 +58,6 @@ const initialState = {
     }
 
     const authReducer = (state = initialState, action) => { 
-        console.log('In auth reducer');
         switch (action.type) {
             case actionTypes.LOGIN_REQUESTED : return onStartLogin(state);
             case actionTypes.LOGIN_SUCCESS : return onLoginComplete(state,action);

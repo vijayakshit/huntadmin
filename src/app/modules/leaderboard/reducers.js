@@ -53,9 +53,7 @@ const initialState = {
     }
 
     const changeHuntForLeaderboard = (state,action) => {
-        console.log("Changing HUnt")
-        console.log(action)
-        console.log(state)
+
         const changeInState = {
             loading: false,
             failure : false,
@@ -76,8 +74,7 @@ const initialState = {
     }
 
     const leaderboardReducer = (state = initialState, action) => { 
-        console.log('In Leaderboard Reducer');
-        console.log(action);
+
         switch (action.type) {
             case actionTypes.LEADERBOARD_DATA_REQUEST_INITIATE : return onLeaderboardFetchStart(state);
             case actionTypes.LEADERBOARD_DATA_REQUEST_SUCCESS : return onLeaderboardFetchComplete(state,action);

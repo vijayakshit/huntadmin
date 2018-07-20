@@ -10,11 +10,11 @@ import Loader from '../../components/Loader/Loader';
 
 class Login extends Component {
   static propTypes = {
-    loggingIn: PropTypes.Boolean,
-    loggedIn: PropTypes.Boolean,
-    user: PropTypes.String,
-    failure: PropTypes.Boolean,
-    failureMessage: PropTypes.String,
+    loggingIn: PropTypes.bool,
+    loggedIn: PropTypes.bool,
+    user: PropTypes.string,
+    failure: PropTypes.bool,
+    failureMessage: PropTypes.string,
   }
 
   authenticate(credentials){
@@ -28,19 +28,21 @@ class Login extends Component {
 
   render() {
 
-    console.log(this.props);
     
     let componentsToRender = [];
 
 
     if(this.props.loggingIn){
-      componentsToRender.push(<Loader/>);
+      componentsToRender.push(<Loader key={"loader"}/>);
     }
     else{
-      componentsToRender.push (<LoginForm authenticate ={(credentials) => this.authenticate(credentials)}/> );
+      componentsToRender.push (
+                <LoginForm key={"loginform"} authenticate ={(credentials) => this.authenticate(credentials)}/> 
+      );
+
       if(this.props.failure){
         componentsToRender.push(
-          <span style={{color:"red"}} >
+          <span key={"failuremessage"} style={{color:"red"}} >
             {this.props.failureMessage}
           </span>
         );

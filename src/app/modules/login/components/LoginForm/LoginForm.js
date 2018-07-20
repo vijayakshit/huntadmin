@@ -9,7 +9,6 @@ class NormalLoginForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', {password:values.password,username:values.userName});
         this.props.authenticate({password:values.password,username:values.userName});
       }
     });

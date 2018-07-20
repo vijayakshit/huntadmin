@@ -24,14 +24,13 @@ export const attemptLogin = (credentials) => {
                 responsejson.then((finalbody)=>{
                     if(thisstatus===200)
                     {
-                      console.log(thisstatus)
-                      console.log(finalbody)
+ 
                       dispatch(loginSuccess(finalbody));
                     }
                     if(thisstatus===400)
                     {
-                      console.log(thisstatus)
-                      console.log(finalbody)
+                      // console.log(thisstatus)
+                      // console.log(finalbody)
                       dispatch(loginFailed(finalbody.status));
                       
                     }
@@ -88,9 +87,7 @@ export const checkIfAuthenticated = () => {
         .then(function(response) {
                   const thisstatus = response.status;     //=> number 100–599
                   const responsejson = response.json()
-                  responsejson.then((finalbody)=>{
-                      console.log(thisstatus)
-                      console.log(finalbody)  
+                  responsejson.then((finalbody)=>{ 
                       if(thisstatus===200)
                       {
                         dispatch(loginSuccess(finalbody))
@@ -98,7 +95,7 @@ export const checkIfAuthenticated = () => {
                     }     
                   );  
               }, function(error) {
-                  console.log(error.message) 
+                  //console.log(error.message) 
 
                 }
     )
@@ -107,7 +104,7 @@ export const checkIfAuthenticated = () => {
 
 
 export const logout = () => {
-    console.log("Checking If Logged in at Server");
+    console.log("Attempting Logout");
     return dispatch => {
   
       
@@ -126,17 +123,15 @@ export const logout = () => {
           .then(function(response) {
                     const thisstatus = response.status;     //=> number 100–599
                     const responsejson = response.json()
-                    responsejson.then((finalbody)=>{
-                        console.log(thisstatus)
-                        console.log(finalbody)  
-                        if(thisstatus==200||thisstatus==401)
+                    responsejson.then((finalbody)=>{ 
+                        if(thisstatus===200||thisstatus===401)
                         {
                           dispatch(onlogoutSuccess())
                         }
                       }     
                     );  
                 }, function(error) {
-                    console.log(error.message) 
+                    //console.log(error.message) 
   
                   }
       )
