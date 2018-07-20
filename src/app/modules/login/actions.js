@@ -122,6 +122,8 @@ export const logout = () => {
               headers: {
                           "Content-Type": "application/json"
                         },
+                        
+              body:JSON.stringify({"please":"try"}),
               credentials: "include",
               mode:"cors",
             }
@@ -132,9 +134,9 @@ export const logout = () => {
                     responsejson.then((finalbody)=>{
                         console.log(thisstatus)
                         console.log(finalbody)  
-                        if(thisstatus===200)
+                        if(thisstatus==200||thisstatus==401)
                         {
-                          dispatch(logout(finalbody))
+                          dispatch(onlogoutSuccess())
                         }
                       }     
                     );  
